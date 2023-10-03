@@ -1,0 +1,88 @@
+package seleniumScripts;
+
+import java.time.Duration;
+import java.util.ArrayList;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+
+public class AmazonProject {
+
+	public static void main(String[] args) throws InterruptedException  {
+       WebDriver driver = new ChromeDriver();
+		
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.get("https://www.amazon.in/");
+		
+         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		
+        WebElement e1 = driver.findElement(By.xpath("//*[@class='nav-line-2 ']"));
+		
+		
+		Actions a = new Actions(driver);
+		
+		
+		a.moveToElement(e1).perform();
+		
+		Thread.sleep(5000);
+		
+	    driver.findElement(By.xpath("(//span[@class='nav-text'])[7]")).click();
+		
+		//div[@class='a-box-inner a-padding-extra-large']/descendant::input[1]
+        //Thread.sleep(7000);
+		
+		driver.findElement(By.xpath("//div[@class='a-box-inner a-padding-extra-large']/descendant::input[1]")).sendKeys("dikshaprasad66@gmail.com");
+		
+		//driver.findElement(By.xpath("//div[@class='a-box-inner a-padding-extra-large']/descendant::input[3]")).sendKeys("Pot@81198");
+		//driver.findElement(By.xpath("//div[@class='a-box-inner a-padding-extra-large']/descendant::input[5]")).click();
+		//driver.findElement(By.xpath("//div[@class='a-section']/descendant::input[9]")).sendKeys("Pot@81198");
+		
+		//driver.findElement(By.xpath("//div[@class='a-section']/descendant::input[9]")).click();
+		
+		driver.findElement(By.xpath("//div[@class='a-box-inner a-padding-extra-large']/descendant::input[1]")).click();
+		
+		driver.findElement(By.xpath("//span[@id='continue']/descendant::input[1]")).click();
+		driver.findElement(By.xpath("//div[@class='a-section']/descendant::input[9]")).sendKeys("diksha@99");
+		driver.findElement(By.xpath("//div[@class='a-section']/descendant::input[11]")).click();
+		
+		
+		//div[@class='nav-search-scope nav-sprite']/descendant::label[1]
+		//driver.findElement(By.xpath("//div[@class='nav-search-scope nav-sprite']/descendant::label[1]")).sendKeys("Mobile");
+         
+		WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
+		searchBox.sendKeys("Iphone x");
+		driver.findElement(By.xpath("//div[@class='nav-right']/descendant::input[1]")).click();
+		
+		driver.findElement(By.linkText("Apple iPhone 13 (128GB) - Midnight")).click();
+		//driver.get("https://www.amazon.in/Apple-iPhone-13-128GB-Midnight/dp/B09G9HD6PD/ref=sr_1_11?keywords=Iphone+x&qid=1696181171&sr=8-11");
+		//ArrayList<String> tabs =new ArrayList<String>(driver.getWindowHandle());
+		//driver.findElement(By.id("wishlistButtonStack")).click();
+		
+		//addToCart.click();
+		 ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+			
+			
+			driver.switchTo().window(tabs.get(1));
+			
+			Thread.sleep(1500);
+			
+			
+			driver.findElement(By.id("wishlistButtonStack")).click();
+			
+		
+		
+		
+		
+		
+		
+		
+		}
+		
+  
+		
+	}
